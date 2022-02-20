@@ -8,3 +8,9 @@
 $ brewfile-desc path/to/Brewfile
 ```
 
+## Install
+
+``` console
+$ brew install k1LoW/tap/brewfile-desc
+```
+
