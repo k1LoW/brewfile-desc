@@ -26,6 +26,7 @@ import (
 	"context"
 	"fmt"
 	"os"
+	"strings"
 	"time"
 
 	"github.com/briandowns/spinner"
@@ -85,13 +86,15 @@ var rootCmd = &cobra.Command{
 				data = append(data, []string{line, ""})
 				continue
 			}
-			if maxlen < len(line) {
-				maxlen = len(line)
+			splitted := strings.SplitN(line, "#", 2) // trim current comment
+			cl := strings.TrimRight(splitted[0], " ")
+			if maxlen < len(cl) {
+				maxlen = len(cl)
 			}
 			if formula.Desc == detector.NoDesc && formula.Name != detector.NoName {
 				formula.Desc = formula.Name
 			}
-			data = append(data, []string{line, fmt.Sprintf("# %s", formula.Desc)})
+			data = append(data, []string{cl, fmt.Sprintf("# %s", formula.Desc)})
 		}
 		s.Stop()
 
