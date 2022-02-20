@@ -32,7 +32,7 @@ changelog:
 brews:
 -
   name: brewfile-desc
-  github:
+  tap:
     owner: k1LoW
     name: homebrew-tap
   commit_author:
@@ -40,6 +40,6 @@ brews:
     email: k1lowxb@gmail.com
   homepage: https://github.com/k1LoW/brewfile-desc
   description: brewfile-desc add descriptions of formulae to Brewfile.
+  license: MIT
   install: |
     bin.install 'brewfile-desc'
-
