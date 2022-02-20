@@ -27,6 +27,8 @@ jobs:
 
       - name: Run test
         run: make ci
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run octocov
         uses: k1LoW/octocov-action@v0
