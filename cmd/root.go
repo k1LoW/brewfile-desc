@@ -59,7 +59,9 @@ var rootCmd = &cobra.Command{
 			return err
 		}
 		s := spinner.New(spinner.CharSets[11], 100*time.Millisecond)
-		s.Color("cyan")
+		if err := s.Color("cyan"); err != nil {
+			return err
+		}
 		s.Suffix = " Analyzing Brewfile..."
 		s.Start()
 
