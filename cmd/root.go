@@ -76,7 +76,7 @@ var rootCmd = &cobra.Command{
 			if err != nil {
 				if force {
 					_, _ = fmt.Fprintf(os.Stderr, "%v\n", err)
-					data = append(data, []string{line, ""})
+					data = append(data, []string{line, fmt.Sprintf("# %s", detector.NoFormula)})
 					continue
 				}
 				_ = fp.Close()

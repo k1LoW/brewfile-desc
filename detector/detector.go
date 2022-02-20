@@ -13,6 +13,7 @@ import (
 
 const NoName = "[No name]"
 const NoDesc = "[No description]"
+const NoFormula = "[Could not find a formula or a cask]"
 
 var brewRe = regexp.MustCompile(`^brew\s+["']([^"',]+)["']`)
 var caskRe = regexp.MustCompile(`^cask\s+["']([^"',]+)["']`)
