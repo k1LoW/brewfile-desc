@@ -1,0 +1,45 @@
+before:
+  hooks:
+    - go mod download
+    - go mod tidy
+builds:
+-
+  id: brewfile-desc-darwin
+  goos:
+    - darwin
+  goarch:
+    - amd64
+    - arm64
+  ldflags:
+    - -s -w -X github.com/k1LoW/brewfile-desc.version={{.Version}} -X github.com/k1LoW/brewfile-desc.commit={{.FullCommit}} -X github.com/k1LoW/brewfile-desc.date={{.Date}} -X github.com/k1LoW/brewfile-desc/version.Version={{.Version}}
+archives:
+-
+  id: brewfile-desc-archive
+  name_template: '{{ .ProjectName }}_v{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}'
+  format_overrides:
+    - goos: darwin
+      format: zip
+  files:
+    - CREDITS
+    - README.md
+    - CHANGELOG.md
+checksum:
+  name_template: 'checksums.txt'
+snapshot:
+  name_template: "{{ .Version }}-next"
+changelog:
+  skip: true
+brews:
+-
+  name: brewfile-desc
+  github:
+    owner: k1LoW
+    name: homebrew-tap
+  commit_author:
+    name: k1LoW
+    email: k1lowxb@gmail.com
+  homepage: https://github.com/k1LoW/brewfile-desc
+  description: brewfile-desc add descriptions of formulae to Brewfile.
+  install: |
+    bin.install 'brewfile-desc'
+
